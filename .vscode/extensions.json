@@ -1,0 +1,23 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+    // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+    // List of extensions which should be recommended for users of this workspace.
+    "recommendations": [
+        // dev in containers
+        "ms-vscode-remote.remote-containers",
+        // https://editorconfig.org
+        "editorconfig.editorconfig",
+        // Makefile
+        "ms-vscode.makefile-tools",
+        // C plugins
+        "ms-vscode.cpptools-extension-pack",
+        // lex/flex
+        // "rj64.lex-snippet",
+        // "luniclynx.lex",
+        // Yacc/Bison
+        // "luniclynx.bison",
+        "daohong-emilio.yash"
+    ],
+    // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+    "unwantedRecommendations": []
+}
