@@ -1,0 +1,10 @@
+TOPTARGETS = all clean
+SUBDIRS = Exercice1 Exercice2
+
+.PHONY: $(TOPTARGETS) $(SUBDIRS)
+
+$(TOPTARGETS): $(SUBDIRS)
+
+$(SUBDIRS):
+	$(MAKE) -C $@ $(MAKECMDGOALS)
+
