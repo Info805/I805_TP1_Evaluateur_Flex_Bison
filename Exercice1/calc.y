@@ -8,11 +8,12 @@ void yyerror(const char *s);
 %}
 
 /* declarations (token, non terminaux, etc.) */
-%token '+' '-' '*' '/' '(' ')' ';' NUMBER
+%token '+' '-' '*' '/' '(' ')' ';' '%' NUMBER
 
 /* priorite des operateurs */
 %left '+' '-'
-%left '*' '/'
+%left '*' '/' '%'
+%right UMINUS
 
 %%
 /* grammaire */
@@ -28,6 +29,8 @@ expr    : expr '+' expr         { $$ = $1 + $3; }
         | expr '-' expr         { $$ = $1 - $3; }
         | expr '*' expr         { $$ = $1 * $3; }
         | expr '/' expr         { $$ = $1 / $3; }
+        | expr '%' expr         { $$ = $1 % $3; }
+        | '-' expr              { $$ = - $2;    }   %prec UMINUS
         | '(' expr ')'          { $$ = $2;      }
         | NUMBER                { $$ = $1;      }
         ;

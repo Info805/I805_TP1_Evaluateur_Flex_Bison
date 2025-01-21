@@ -9,6 +9,7 @@
 
 /* -- definitions regulieres -- */
 decimalnumber       0|[1-9][0-9]*
+mod                 mod|MOD
 
 %%
   /* --- regles lexicales --- */
@@ -17,6 +18,7 @@ decimalnumber       0|[1-9][0-9]*
 \-                  { return '-'; }
 \*                  { return '*'; }
 \/                  { return '/'; }
+{mod}               { return '%'; }
 \;                  { return ';'; }
 \(                  { return '('; }
 \)                  { return ')'; }
