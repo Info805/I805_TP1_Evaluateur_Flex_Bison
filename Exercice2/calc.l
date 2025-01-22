@@ -12,6 +12,7 @@
 decimalnumber       0|[1-9][0-9]*
 ident               [a-zA-Z][a-zA-Z0-9_]*
 let                 let|LET
+mod                 mod|MOD
 comment1            "//".*
 comment2            "/*"([^*]|("*"+[^/*]))*"*"+"/"
 comment             {comment1}|{comment2}
@@ -23,6 +24,7 @@ comment             {comment1}|{comment2}
 \-                  { return '-'; }
 \*                  { return '*'; }
 \/                  { return '/'; }
+{mod}               { return '%'; }
 \;                  { return ';'; }
 \=                  { return '='; }
 \(                  { return '('; }

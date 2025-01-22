@@ -13,7 +13,7 @@ int memory[TMAX];
 
 /* declarations (token, non terminaux, etc.) */
 %union { int number; int index; }
-%token '+' '-' '*' '/' '(' ')' ';' '=' LET
+%token '+' '-' '*' '/' '(' ')' ';' '%' '=' LET UMINUS
 %token <number> NUMBER
 %token <index> IDENT
 
@@ -22,7 +22,8 @@ int memory[TMAX];
 /* priorite des operateurs */
 %right '='
 %left '+' '-'
-%left '*' '/'
+%left '*' '/' '%'
+%right UMINUS
 
 %%
 /* grammaire */
@@ -38,6 +39,8 @@ expr    : expr '+' expr         { $$ = $1 + $3; }
         | expr '-' expr         { $$ = $1 - $3; }
         | expr '*' expr         { $$ = $1 * $3; }
         | expr '/' expr         { $$ = $1 / $3; }
+        | expr '%' expr         { $$ = $1 % $3; }
+        | '-' expr              { $$ = - $2;    }   %prec UMINUS
         | '(' expr ')'          { $$ = $2;      }
         | LET IDENT '=' expr    { $$ = $4; memory[$2] = $4; }
         | NUMBER                { $$ = $1;      }
